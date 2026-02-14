@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:trixie
 
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
     apt-get update && \
@@ -25,6 +25,6 @@ RUN apt-get install -y uidmap
 
 ADD root-files /
 
-ADD --chown=1000:1000  home-files /home/rootless
+ADD --chown=1000:1000 home-files /home/rootless
 
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]

@@ -3,9 +3,7 @@ import select
 import socket
 from socketserver import ThreadingMixIn, TCPServer, StreamRequestHandler
 import db
-import base64
 import urllib.parse as urlparse
-import OpenSSL
 import os
 import time
 import tempfile
@@ -17,6 +15,9 @@ import json
 import httpx
 import subprocess
 import itertools
+import pathlib
+import nacl.encoding
+import nacl.signing
 
 
 # https://github.com/python/cpython/blob/a3443c0e22a8623afe4c0518433b28afbc3a6df6/Lib/http/server.py#L577
@@ -82,16 +83,12 @@ class ThreadingTCPServer(ThreadingMixIn, TCPServer):
     pass
 
 
-with open("cert.pem") as f:
-    cert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, f.read())
+pubkey = nacl.signing.VerifyKey(pathlib.Path('pubkey').read_text().strip(), encoder=nacl.encoding.HexEncoder)
 
 
 def validate(token):
     try:
-        id, sig = token.split(":", 1)
-        sig = base64.b64decode(sig, validate=True)
-        OpenSSL.crypto.verify(cert, sig, id.encode(), "sha256")
-        return id
+        return pubkey.verify(token.encode(), encoder=nacl.encoding.HexEncoder).decode()
     except Exception:
         return None
 

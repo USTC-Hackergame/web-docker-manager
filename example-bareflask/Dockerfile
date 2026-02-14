@@ -1,4 +1,4 @@
-FROM ustclug/debian:12
+FROM ustclug/debian:13
 
 ENV DEBIAN_FRONTEND noninteractive
 

@@ -1,6 +1,6 @@
 # GeekGame 动态 Web 类题目容器管理
 
-Note：
+Note:
 
 - 本仓库基于 web-docker-manager 项目的修改参见 [CHANGES.md](./CHANGES.md)
 - 本地调试时，你可能需要一个解析到 127.0.0.1 的泛域名。
@@ -14,7 +14,7 @@ Contributions:
 
 本项目是基于 Hackergame 的动态容器管理修改而来，基本用法可以参考[原项目](https://github.com/USTC-Hackergame/hackergame-challenge-docker)。
 
-项目附带的测试证书和原项目一致。你可以使用测试 Token： `1:MEUCIQCjK1QcPFro86w3bKPb5zUZZd96ocp3EZDFcwLtJxNNDAIgEPk3Orw0mE+zHLQA7e31kSFupNtG9uepz2H4EqxlKWY=`
+项目附带的测试公钥和原项目一致。你可以使用测试 Token：`c7e810a06ac7f9c6d1a4cde75e8a04e7460dce44828267524f13095a318ada4bd97311513c00cadb5719b5f6e2be5d1e87233ca83b6f64b1f4b1cd9c6cd6ca0231`
 
 ## 设计思路
 
